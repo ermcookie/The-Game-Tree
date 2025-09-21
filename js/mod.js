@@ -1,7 +1,7 @@
 let modInfo = {
-	name: "The ??? Tree",
+	name: "The Games Tree",
 	author: "nobody",
-	pointsName: "points",
+	pointsName: "hours",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
@@ -42,6 +42,12 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (hasUpgrade("c", 21)) gain = gain.times(1.5)
+	if (hasUpgrade("c", 22)) gain = gain.times(2)
+	if (hasUpgrade("c", 23)) gain = gain.times(3)
+	if (hasUpgrade("c", 24)) gain = gain.times(4)
+	if (hasUpgrade("c", 31)) gain = gain.add(upgradeEffect("c", 31))	
+	if (hasUpgrade("c", 32)) gain = gain.times(upgradeEffect("c", 32))
 	return gain
 }
 
